@@ -18,3 +18,13 @@ label{
     top: 20px;
     right: 20px;
 }
+
+.progress{
+    height: 20px;
+    padding: 10px;
+    background-color: white;
+}
+
+.progress-bar{
+    background-color: blue;
+}
