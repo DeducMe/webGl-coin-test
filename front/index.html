@@ -12,7 +12,12 @@
 </body>
 
 <script>
-    
+    var progress = document.createElement('div');
+    var progressBar = document.createElement('div');
+
+    progress.appendChild(progressBar);
+
+    document.body.appendChild(progress);
 </script>
 
 <script type="module">
@@ -63,8 +68,10 @@
     let coinGeometry
 
     const loadManager = new THREE.LoadingManager();
+    let objLoader = new OBJLoader(loadManager);
 
-    const texturesLoader = new THREE.TextureLoader(loadManager);
+    const texturesLoader = new THREE.TextureLoader();
+
     const materials = {
         base: new THREE.MeshStandardMaterial({
             map: texturesLoader.load('./base_color.jpg'),
@@ -76,24 +83,9 @@
     };
 
     let coin
-    let objLoader = new OBJLoader();
+    
 
     objLoader.load('./model_super_reduced.obj', function (geometry) {
-        geometry.traverse( function ( node ) {
-
-            if ( node.isMesh ) {
-                node.material = materials.base
-            }
-
-        } );
-        console.log('loaded')
-        if (coin) scene.remove(coin)
-
-        coin = geometry
-        scene.add(coin);
-    })
-
-    objLoader.load('./model_reduced.obj', function (geometry) {
         geometry.traverse( function ( node ) {
 
             if ( node.isMesh ) {
@@ -127,6 +119,9 @@
     
     window.addEventListener( 'resize', onWindowResize );
 
+    loadManager.onProgress = function ( item, loaded, total ) {
+        progressBar.style.width = (loaded / total * 100) + '%';
+    };
 
     function onWindowResize() {
 
