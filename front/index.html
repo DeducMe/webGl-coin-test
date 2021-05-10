@@ -66,7 +66,7 @@
     const loadManager = new THREE.LoadingManager();
     let objLoader = new OBJLoader(loadManager);
 
-    const texturesLoader = new THREE.TextureLoader();
+    const texturesLoader = new THREE.TextureLoader(loadManager);
 
     const materials = {
         base: new THREE.MeshStandardMaterial({
@@ -116,6 +116,7 @@
     window.addEventListener( 'resize', onWindowResize );
 
     loadManager.onProgress = function ( item, loaded, total ) {
+        console.log(item, loaded)
         progressBar.style.width = (loaded / total * 100) + '%';
     };
 
