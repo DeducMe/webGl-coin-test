@@ -78,22 +78,19 @@
     let coin
     let objLoader = new OBJLoader();
 
-        objLoader.load('./model_reduced.obj', function (geometry) {
-            geometry.traverse( function ( node ) {
+    objLoader.load('./model_reduced.obj', function (geometry) {
+        geometry.traverse( function ( node ) {
 
-                if ( node.isMesh ) {
-                    node.material = materials.base
-                }
+            if ( node.isMesh ) {
+                node.material = materials.base
+            }
 
-            } );
-            console.log('loaded')
-            coin = geometry
-        })
-
-    loadManager.onLoad = () => {
+        } );
+        console.log('loaded')
+        coin = geometry
         scene.add(coin);
-    };
-    
+
+    })
 
     animate()
     
