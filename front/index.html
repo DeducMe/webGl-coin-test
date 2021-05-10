@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="progress" >
+    <div class="progress" id="progress">
         <div class="progress-bar" id="progressBar"></div>
     </div>
 </body>
@@ -25,6 +25,7 @@
     let group, camera, mesh, scene, renderer;
 
     const progressBar = document.getElementById('progressBar');
+    const progress = document.getElementById('progress');
 
 
     scene = new THREE.Scene();
@@ -116,8 +117,9 @@
     window.addEventListener( 'resize', onWindowResize );
 
     loadManager.onProgress = function ( item, loaded, total ) {
-        console.log(item, loaded)
         progressBar.style.width = (loaded / total * 100) + '%';
+        if(loaded === total) progress.style.display = 'none'
+
     };
 
     function onWindowResize() {
