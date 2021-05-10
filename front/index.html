@@ -78,6 +78,21 @@
     let coin
     let objLoader = new OBJLoader();
 
+    objLoader.load('./model_super_reduced.obj', function (geometry) {
+        geometry.traverse( function ( node ) {
+
+            if ( node.isMesh ) {
+                node.material = materials.base
+            }
+
+        } );
+        console.log('loaded')
+        if (coin) scene.remove(coin)
+
+        coin = geometry
+        scene.add(coin);
+    })
+
     objLoader.load('./model_reduced.obj', function (geometry) {
         geometry.traverse( function ( node ) {
 
@@ -87,9 +102,25 @@
 
         } );
         console.log('loaded')
+        if (coin) scene.remove(coin)
+
         coin = geometry
         scene.add(coin);
+    })
 
+    objLoader.load('./model.obj', function (geometry) {
+        geometry.traverse( function ( node ) {
+
+            if ( node.isMesh ) {
+                node.material = materials.base
+            }
+
+        } );
+        console.log('loaded')
+        if (coin) scene.remove(coin)
+
+        coin = geometry
+        scene.add(coin);
     })
 
     animate()
