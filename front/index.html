@@ -71,14 +71,12 @@
             metalnessMap: texturesLoader.load('./metallic.png'),
             normalMap: texturesLoader.load('./normal.jpg'),
             roughnessMap: texturesLoader.load('./roughness.jpg'),
-            alphaMap:texturesLoader.load('./height.png')
+            alphaMap:texturesLoader.load('./height.jpg')
         }),
     };
 
     let coin
-
-    loadManager.onLoad = () => {
-        let objLoader = new OBJLoader();
+    let objLoader = new OBJLoader();
 
         objLoader.load('./model_reduced.obj', function (geometry) {
             geometry.traverse( function ( node ) {
@@ -89,9 +87,11 @@
 
             } );
             console.log('loaded')
-            scene.add(geometry);
             coin = geometry
         })
+
+    loadManager.onLoad = () => {
+        scene.add(coin);
     };
     
 
