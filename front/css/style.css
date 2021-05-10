@@ -18,6 +18,10 @@ label{
     top: 20px;
     right: 20px;
 }
+.progress{
+    display: fixed;
+    top: 0;
+}
 
 .progress,
 .progress-bar{
@@ -27,5 +31,6 @@ label{
 }
 
 .progress-bar{
+    width: 0;
     background-color: blue;
 }
