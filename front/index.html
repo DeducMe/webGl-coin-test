@@ -67,10 +67,10 @@
     const texturesLoader = new THREE.TextureLoader(loadManager);
     const materials = {
         base: new THREE.MeshStandardMaterial({
-            map: texturesLoader.load('./base_color.png'),
+            map: texturesLoader.load('./base_color.jpg'),
             metalnessMap: texturesLoader.load('./metallic.png'),
-            normalMap: texturesLoader.load('./normal.png'),
-            roughnessMap: texturesLoader.load('./roughness.png'),
+            normalMap: texturesLoader.load('./normal.jpg'),
+            roughnessMap: texturesLoader.load('./roughness.jpg'),
             alphaMap:texturesLoader.load('./height.png')
         }),
     };
