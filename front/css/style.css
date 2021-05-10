@@ -19,7 +19,8 @@ label{
     right: 20px;
 }
 
-.progress{
+.progress,
+.progress-bar{
     height: 20px;
     padding: 10px;
     background-color: white;
