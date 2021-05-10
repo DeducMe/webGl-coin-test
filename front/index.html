@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="progress" id="progress">
+    <div class="progress" id="progressBar" >
         <div class="progress-bar" id="progressBar"></div>
     </div>
 </body>
@@ -19,14 +19,11 @@
     import { OBJLoader } from './three/OBJLoader.js';
 
     import { OrbitControls } from './three/OrbitControls.js';
-    import { ConvexGeometry } from './three/ConvexGeometry.js';
-    import { BufferGeometryUtils } from './three/BufferGeometryUtils.js';
 
-    let group, camera, mesh, scene, renderer;
+    let camera, scene, renderer;
 
     const progressBar = document.getElementById('progressBar');
-    const progress = document.getElementById('progress');
-
+    const progress = document.getElementById('progressBar');
 
     scene = new THREE.Scene();
 
@@ -58,11 +55,6 @@
     camera.add( light );
 
     // textures
-
-    group = new THREE.Group();
-    scene.add( group );
-
-    let coinGeometry
 
     const loadManager = new THREE.LoadingManager();
     let objLoader = new OBJLoader(loadManager);
@@ -118,7 +110,7 @@
 
     loadManager.onProgress = function ( item, loaded, total ) {
         progressBar.style.width = (loaded / total * 100) + '%';
-        if(loaded === total) progress.style.display = 'none'
+        if(loaded === total) progressBar.style.display = 'none'
 
     };
 
