@@ -80,7 +80,7 @@
     loadManager.onLoad = () => {
         let objLoader = new OBJLoader();
 
-        objLoader.load('./model.obj', function (geometry) {
+        objLoader.load('./model_reduced.obj', function (geometry) {
             geometry.traverse( function ( node ) {
 
                 if ( node.isMesh ) {
