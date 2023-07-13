@@ -1,8 +1,8 @@
 Here I attempted to use Three.js with a coin model that i found online
 
-To start the project, follow these steps:
-
 ## Getting Started
+
+To start the project, follow these steps:
 
 1. Install all project dependencies by running the following command:
 
